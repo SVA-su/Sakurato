@@ -45,6 +45,8 @@
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; 
 
-}</code>
+}
+	
+	</code>
 
 А как же Apache? А я не знаю...
