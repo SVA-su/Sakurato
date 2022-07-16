@@ -1,0 +1,50 @@
+<?php
+#!/usr/bin/php
+/*
+--------------------------------------------------------
+	Встроенный помощник для работы сайта, по
+	типу artisan в Laravel.
+	Author: Mr.666dd & Email: admin@kolbun.ru
+--------------------------------------------------------
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Подключение конфигурации приложения и обработчика аргументов
+|--------------------------------------------------------------------------
+*/
+$db = require "config/database.php";
+require "vendor/client/handler.php";
+$infoHandler = require "config/handler.client.php";
+
+if($infoHandler['work'] != 'true') die("Error: Helper ".$infoHandler['name']." off in config.\n");
+
+if(!isset($argv[1])) die("Error: command is not specified\n");
+
+$command = strtolower($argv[1]);
+if(!in_array($command, $infoHandler['commands'])){
+	die("Error: command is not found\n");
+} for($i = 0; $i < count($infoHandler['commands']); $i++){
+	if(array_search($command, $infoHandler['commands'], true) == $i){
+		$command = $infoHandler['commands'][$i];
+
+		$handler = new ClientCommandHandler($db['host'], $db['user'], $db['password'], $db['db']['client']);
+
+		if($command == 'up'){
+			$handler->UpApp();
+		} else if($command == 'down'){
+			$handler->DownApp();
+		} else if($command == 'status'){
+			if($handler->CheckApp() == 1) echo "Application is down\n"; elseif($handler->CheckApp() == 0) echo "Application is up\n"; else echo "Error: Check: Return unknown int\n";
+		} else if($command == 'info'){
+			printf("\nName: %s or %s\n", $infoHandler['name'], $argv[0]);
+			printf("Version: %s\n", $infoHandler['version']);
+			printf("Description: %s\n", $infoHandler['description']);
+			printf("Author: %s\n", $infoHandler['author']);
+			printf("Commands: ");
+			foreach($infoHandler['commands'] as $commandsHandler){
+				printf("\n%s", $commandsHandler);
+			}
+		}
+	}
+}
