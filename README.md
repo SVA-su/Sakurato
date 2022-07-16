@@ -4,7 +4,10 @@
 Для движка нужно: php8.0, cli, curl, Веб-сервер: Nginx/Apache, Composer
 #Выбор веб-сервера
   Так как я написан его для Nginx, советую использовать его. Вот и конфигурация:
-  <code>server {
+  <code>
+	
+	
+	server {
 	server_name <DOMAIN>;
 	root ВАШ КАТАЛОГ/pages/index.php;
 	index index.php;
