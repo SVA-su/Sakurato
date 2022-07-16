@@ -1,8 +1,10 @@
 # GitEngine
-Мой Собственный Движок на PHP 8.0
+Мой Собственный Движок на PHP 8.0, скоро будет система роутов
 # Требования
 Для движка нужно: php8.0, cli, curl, Веб-сервер: Nginx/Apache, Composer
 
+# Настройка
+В папке config/ настройте как вам нужно. 
 
 # Выбор веб-сервера
 
@@ -14,7 +16,7 @@
 	
 	server {
 	server_name <DOMAIN>;
-	root ВАШ КАТАЛОГ/pages/index.php;
+	root <ВАШ КАТАЛОГ>/pages/index.php;
 	index index.php;
     location / {
         try_files $uri /index.php?$args;
@@ -44,3 +46,5 @@
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; 
 
 }</code>
+
+А как же Apache? А я не знаю...
