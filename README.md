@@ -10,9 +10,7 @@
 
   Так как я написан его для Nginx, советую использовать его. Вот и конфигурация:
   
-  
-  <code>
-	
+ 
 	
 	server {
 	server_name <DOMAIN>;
@@ -21,7 +19,6 @@
     location / {
         try_files $uri /index.php?$args;
     }
-
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass unix:/run/php/php8.0-fpm.sock;
@@ -37,16 +34,12 @@
         fastcgi_send_timeout 300;
         fastcgi_read_timeout 300;
     }
-    #rewrite ^/([^.]+)$ /$1.php break;
-
     listen 443 ssl; 
     ssl_certificate /etc/letsencrypt/live/<DOMAIN>/fullchain.pem; 
     ssl_certificate_key /etc/letsencrypt/live/<DOMAIN>/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; 
-
 }
 	
-	</code>
 
 А как же Apache? А я не знаю...
