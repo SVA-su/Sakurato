@@ -19,7 +19,7 @@
 1. Создаем базу данных Mysql и выполняем sql запрос:
 
 <code>CREATE TABLE `config` (`down` int NOT NULL DEFAULT '0');
-INSERT INTO `config` (`down`) VALUES (0);</code>
+	INSERT INTO `config` (`down`) VALUES (0);</code>
 Илиже импортируйте GitEngine.sql файл
 
 В папке config/ настройте как вам нужно. 
