@@ -11,10 +11,6 @@
 
 <code> git clone https://github.com/mr666dd/gitengine </code>
 
-И так же
-
-<code> composer require mr666dd/gitengine </code>
-
 # Настройка
 1. Создаем базу данных Mysql и выполняем sql запрос:
 
