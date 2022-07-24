@@ -14,9 +14,16 @@
 # Настройка
 1. Создаем базу данных Mysql и выполняем sql запрос:
 
-<code>CREATE TABLE \`config\` (\`down\` int NOT NULL DEFAULT \'0\');
-	INSERT INTO \`config\` (\`down\`) VALUES (0);</code>
-Илиже импортируйте GitEngine.sql файл
+```sql
+CREATE DATABASE database_name;
+	use database_name;
+    	CREATE TABLE config (
+    	down int NOT NULL AUTO_INCREMENT,
+    	PRIMARY KEY (down)
+    	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    	INSERT INTO config (down) VALUES ('0');
+	UPDATE config SET down = '0' WHERE config.down = 1;
+```
 
 В папке config/ настройте как вам нужно. 
 После установки, зайдите в корневой каталог сайта, и напишите
