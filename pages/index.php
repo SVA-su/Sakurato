@@ -6,7 +6,7 @@ if (PHP_VERSION_ID < 80000) {
 	ShowError(500);
 }
 if(strcmp($_SERVER['HTTP_HOST'], $infoSite['domain']['client'])) die("HTTP хост, запрашиваемый, не соответствует тому, что есть в конфиге. Проверьте это.(".$_SERVER['HTTP_HOST']." != ".$infoSite['client']."(\$infoSite['client']))");
-require $root."/templates/function/session.php"; 
+//require $root."/templates/function/session.php"; 
 
     $path = $_SERVER['REQUEST_URI'];
     $pathServer = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
