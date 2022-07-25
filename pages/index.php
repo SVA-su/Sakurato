@@ -1,30 +1,37 @@
 <?php
-if(!isset($_SERVER['REQUEST_URI'])) die("Вы используете php-cli, чего данный фреймворк не поддерживает. Пожалуйста, зайдите с браузера или используйте client в корне проекта\n");
+
+if(!isset($_SERVER['REQUEST_URI'])) die("[GitEngine] Вы используете php-cli, чего данный фреймворк не поддерживает. Пожалуйста, зайдите с браузера или используйте client в корне проекта\n");
+
 require "../config/main.php";
+require "../templates/function/file.php";
+
 if (PHP_VERSION_ID < 80000) {
 	printf("PHP Version is < 8.0. Please use a > 8.0");
 	ShowError(500);
 }
-if(strcmp($_SERVER['HTTP_HOST'], $infoSite['domain']['client'])) die("HTTP хост, запрашиваемый, не соответствует тому, что есть в конфиге. Проверьте это.(".$_SERVER['HTTP_HOST']." != ".$infoSite['client']."(\$infoSite['client']))");
-//require $root."/templates/function/session.php"; 
-
-    $path = $_SERVER['REQUEST_URI'];
-    $pathServer = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+//if(strcmp($_SERVER['HTTP_HOST'], $infoSite['domain']['client'])) die("HTTP хост, запрашиваемый, не соответствует тому, что есть в конфиге. Проверьте это.(".$_SERVER['HTTP_HOST']." != ".$infoSite['client']."(\$infoSite['client']))");
 //проверка на наличие get запроса в $_SERVER['REQUEST_URI'] и запись в $path запрашиваемой страницы
-    if(str_contains($path, '?')){
-        $path = substr($path, 0, strpos($path, '?'));
+    $pathServer = $_SERVER['REQUEST_URI'];
+    if(str_contains($pathServer, '?')){
+        $pathServer = substr($pathServer, 0, strpos($pathServer, '?'));
     }
+    $path = $pathServer;
+    if(str_contains($path, '.')){
+        $temp = explode('.', $path);
+        $exe = $temp[1];
+    }
+    //var_dump($exe);
 //проверка пути, который запрашивают
-    if(substr($path, -1) == '/'){
-        $path = $path."index";
-    } 
+    if(substr($pathServer, -1) == '/' ) $pathServer = $pathServer."index";
+    if(!isset($exe)) $pathServer = '../templates/site/' . $_SERVER['HTTP_HOST'] . $pathServer . ".php";
+    else $pathServer = '../templates/site/' . $_SERVER['HTTP_HOST'] . $temp[0] . "." . $exe;
+    //var_dump($pathServer);
 
-//Вы можете выполнять код, если пользователь на определённой странице, пример:
-/*
-    if($path == '/') { echo "Главная Страница!"; }
-*/
-    $path = '../templates/site' . $path . '.php'; 
-    if(file_exists($path)){
-        die(include($path));
-    } else if(!file_exists($path)) ShowError(404); else ShowError(500); 
+    if(file_exists($pathServer)){
+        permsfile($pathServer);
+        include($pathServer);
+    }
+    else if(!file_exists($pathServer)) ShowError(404);
+    else ShowError(500); 
+
 ?>
