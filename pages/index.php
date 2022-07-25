@@ -11,6 +11,7 @@ if (PHP_VERSION_ID < 80000) {
 }
 //if(strcmp($_SERVER['HTTP_HOST'], $infoSite['domain']['client'])) die("HTTP хост, запрашиваемый, не соответствует тому, что есть в конфиге. Проверьте это.(".$_SERVER['HTTP_HOST']." != ".$infoSite['client']."(\$infoSite['client']))");
 //проверка на наличие get запроса в $_SERVER['REQUEST_URI'] и запись в $path запрашиваемой страницы
+
     $pathServer = $_SERVER['REQUEST_URI'];
     if(str_contains($pathServer, '?')){
         $pathServer = substr($pathServer, 0, strpos($pathServer, '?'));
@@ -19,8 +20,18 @@ if (PHP_VERSION_ID < 80000) {
     if(str_contains($path, '.')){
         $temp = explode('.', $path);
         $exe = $temp[1];
+        if($exe == 'css')
+            header('Content-type: text/css;');
+        elseif($exe == 'js')
+            header('Content-type: application/javascript;');
+        elseif($exe == 'json')
+            header('Content-type: application/json;');
+        if(getimagesize("../templates/site/".$_SERVER['HTTP_HOST'].$temp[0].".".$exe)){
+            header('Content-type: '.$info['mime'].';');
+            unset($info);
+        }
+        header('charset: UTF-8;');
     }
-    //var_dump($exe);
 //проверка пути, который запрашивают
     if(substr($pathServer, -1) == '/' ) $pathServer = $pathServer."index";
     if(!isset($exe)) $pathServer = '../templates/site/' . $_SERVER['HTTP_HOST'] . $pathServer . ".php";
