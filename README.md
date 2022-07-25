@@ -9,7 +9,9 @@
 
 Можно установить данный движок командами:
 
-<code> git clone https://github.com/mr666dd/gitengine </code>
+```bash
+git clone https://github.com/mr666dd/gitengine 
+```
 
 # Настройка
 1. Создаем базу данных Mysql и выполняем sql запрос:
@@ -28,15 +30,17 @@ CREATE DATABASE database_name;
 В папке config/ настройте как вам нужно. 
 После установки, зайдите в корневой каталог сайта, и напишите
 
+```bash
 composer install
+```
 
 # Выбор веб-сервера
 
   Так как я написал его под Nginx, советую использовать его. Вот и конфигурация:
   
  
-	
-	server {
+```
+server {
 	server_name <DOMAIN>;
 	root <ВАШ КАТАЛОГ>/pages/index.php;
 	index index.php;
@@ -64,6 +68,6 @@ composer install
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; 
 }
-	
+```
 
 А как же Apache? А я не знаю...
