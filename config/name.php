@@ -4,6 +4,6 @@ return [
     'author' => 'Mr.666dd',
     'disigner' => 'AgeraFly',
     'author_url' => 'https://github.com/Mr666dd',
-    'disigner' => 'https://github.com/AgeraFly'
+    'disigner_url' => 'https://github.com/AgeraFly'
  ];
 ?>
