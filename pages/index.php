@@ -17,21 +17,25 @@ if (PHP_VERSION_ID < 80000) {
         $pathServer = substr($pathServer, 0, strpos($pathServer, '?'));
     }
     $path = $pathServer;
-    if(str_contains($path, '.')){
-        $temp = explode('.', $path);
-        $exe = $temp[1];
-        if($exe == 'css')
-            header('Content-type: text/css;');
-        elseif($exe == 'js')
-            header('Content-type: application/javascript;');
-        elseif($exe == 'json')
-            header('Content-type: application/json;');
-        if(getimagesize("../templates/site/".$_SERVER['HTTP_HOST'].$temp[0].".".$exe)){
-            header('Content-type: '.$info['mime'].';');
-            unset($info);
-        }
-        header('charset: UTF-8;');
-    }
+
+        if(str_contains($path, '.')){
+            $temp = explode('.', $path);
+            $exe = $temp[1];
+            if(!file_exists('../templates/site/' . $_SERVER['HTTP_HOST'] . $temp[0] . "." . $exe)) ShowError(404);
+            if($exe == 'css')
+                header('Content-type: text/css;');
+            else if($exe == 'js')
+                header('Content-type: application/javascript;');
+            else if($exe == 'json')
+                header('Content-type: application/json;');
+            else {
+                $info = getimagesize("../templates/site/".$_SERVER['HTTP_HOST'].$temp[0].".".$exe);
+                header('Content-type: '.$info['mime'].';');
+                unset($info);
+            }
+        } else header("Content-type: text/html");
+
+    header('charset: UTF-8;');
 //проверка пути, который запрашивают
     if(substr($pathServer, -1) == '/' ) $pathServer = $pathServer."index";
     if(!isset($exe)) $pathServer = '../templates/site/' . $_SERVER['HTTP_HOST'] . $pathServer . ".php";
@@ -41,6 +45,7 @@ if (PHP_VERSION_ID < 80000) {
     if(file_exists($pathServer)){
         permsfile($pathServer);
         include($pathServer);
+        die();
     }
     else if(!file_exists($pathServer)) ShowError(404);
     else ShowError(500); 
