@@ -7,3 +7,6 @@ function ShowError($error, $die = NULL){
 	include($path);
     }	
 }
+function exception_error_handler($errno, $errstr, $errfile, $errline ) {
+    throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+}

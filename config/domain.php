@@ -1,7 +1,7 @@
 <?php
 return [
     'domain' => [
-        //Заполните домены
+        'client' => '',
     ],
     'protocol' => 'https://'
 ];
