@@ -1,7 +1,23 @@
 # GitEngine
 Мой Собственный Движок на PHP 8.0, скоро будет система роутов
 # Требования
-Для движка нужно: php8.0, cli, curl, Веб-сервер: Nginx/Apache, Composer
+Для движка нужно:
+
+php8.0, 
+
+php8.0-cli, 
+
+php8.0-curl, 
+
+php8.0-fpm,
+
+php8.0-mysql; 
+
+Redis и Mysql(Можно и MariaDB, но, я не советую);
+
+Веб-сервер: Nginx;
+
+Composer
 
 # Для отображения страниц:
 
@@ -14,7 +30,33 @@
 Можно установить данный движок командами:
 
 ```bash
+# Устанавливаем git
+
+apt install git
+
+# Копируем движок
+
 git clone https://github.com/mr666dd/gitengine 
+
+# Добавляем репозитории PHP, Redis
+
+LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+
+add-apt-repository ppa:redislabs/redis -y
+
+# Обновляем список пакетов
+
+apt update
+
+# Добавление универсального репозитория, если вы в Ubuntu 18.04
+
+apt-add-repository universe
+
+# Устанавливаем зависимости
+
+apt install php-8.0-{cli,curl,fpm,mysql} nginx redis-server, mysql-{server,client}
+
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
 # Настройка
@@ -40,7 +82,7 @@ composer install
 
 # Выбор веб-сервера
 
-  Так как я написал его под Nginx, советую использовать его. Вот и конфигурация:
+  Так как я написал его под Nginx, советую использовать его. Под Apache - вам придётся придумывать что то. Вот и конфигурация:
   
  
 ```
@@ -74,4 +116,4 @@ server {
 }
 ```
 
-А как же Apache? А я не знаю...
+
