@@ -3,7 +3,7 @@
 
 Одно из преймуществ, поддержка нескольких сайтов на 1 движке, 
 
-client - встроеный файл-помощник,
+client - встроеный файл-помощник(php client info для информации),
 
 # Требования
 Для движка нужно:
@@ -62,6 +62,15 @@ apt-add-repository universe
 apt install php-8.0-{cli,curl,fpm,mysql} nginx redis-server, mysql-{server,client}
 
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+# Устанавливаем PHP зависимости
+
+composer install
+
+# Изменяем права на файлы
+cd ПАПКА ПРОЕКТА/
+
+chmod 777 * -R
 ```
 
 # Настройка
@@ -79,11 +88,6 @@ CREATE DATABASE database_name;
 ```
 
 В папке config/ настройте как вам нужно. 
-После установки, зайдите в корневой каталог сайта, и напишите
-
-```bash
-composer install
-```
 
 # Выбор веб-сервера
 
