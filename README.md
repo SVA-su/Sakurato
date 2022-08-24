@@ -63,7 +63,7 @@ apt-add-repository universe
 
 # Устанавливаем зависимости
 
-apt install php-8.0-{cli,curl,fpm,mysql} nginx redis-server, mysql-{server,client}
+apt install php8.0-{cli,curl,fpm,mysql} nginx redis-server, mysql-{server,client}
 
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
