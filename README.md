@@ -239,23 +239,12 @@ return [
     'protocol2' => 'http://'
 ];
 ```
-
-#### **/config/header.php**
+#### **/config/home.php**
 
 ```php
 <?php
 return [
-    'check' => 'on', // Включение обработчика методов запроса
-    'allowHeader' => 'true', // Включение обработчика заголовка браузера
-    'allow' => [ // Разрешенные методы запросов, можно менять как хотите
-        'GET',
-        'POST',
-        'HEAD',
-    ],
-    'header' => [ // Можете изменить как хотите. Это влияет только на отображение в заголовке браузера
-        'Engine: GitEngine/1.2.0',
-        'Site:'.$_SERVER['HTTP_HOST'],
-    ],
+    'root' => "/var/www/gitengine/",
 ];
 ```
 
