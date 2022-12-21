@@ -44,7 +44,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 ###### Сердце движка, если хотите можете изменить путь где будет храниться движок.
 
 ```bash
-mkdir -p /var/www && cd /var/www && git clone https://github.com/mr666dd/gitengine && cd /var/www/gitengine && composer install
+mkdir -p /var/www && cd /var/www && git clone https://github.com/git-engine/gitengine && cd /var/www/gitengine && composer install
 ```
 
 # Настройка движка
