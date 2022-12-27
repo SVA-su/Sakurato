@@ -14,12 +14,12 @@
 
 # Установка
 
-#### Устанавливаем PHP 8.0 и его зависимости вместе с nginx, redis, mysql и composer
+#### Устанавливаем PHP 8.2 и его зависимости вместе с nginx, redis, mysql и composer
 
 ###### Для нормальной установки компонентов движка, зайдите с root командой `sudo -s`.
 
 ```bash
-apt install -y git && LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:redislabs/redis && apt update && apt install -y php8.0-{cli,curl,fpm,mysql} nginx redis-server mysql-{server,client} && apt purge apache2 && curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+apt install -y git && LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:redislabs/redis && apt update && apt install -y php8.2-{cli,curl,fpm,mysql} nginx redis-server mysql-{server,client} && apt purge apache2 && curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
 ###### Отдельные команды, если нужно установить что-то отдельно.
@@ -31,8 +31,8 @@ LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 add-apt-repository -y ppa:redislabs/redis 
 # Обновление пакетов
 apt update
-# Установка php8.0, nginx, redis и mysql
-apt install -y php8.0-{cli,curl,fpm,mysql} nginx redis-server mysql-{server,client} 
+# Установка php8.2, nginx, redis и mysql
+apt install -y php8.2-{cli,curl,fpm,mysql} nginx redis-server mysql-{server,client} 
 # Удаление apache2 если он установился с комплектом от php.
 apt purge apache2 
 # Установка composer.
@@ -148,7 +148,7 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/run/php/php8.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
