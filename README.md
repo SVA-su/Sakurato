@@ -1,6 +1,6 @@
-# GitEngine | Новый современный движок
+# Sakurato | Новый современный движок
 
-### GitEngine - это новый движок для сайтов написанный на PHP версии 8.2 с полным исходным кодом
+### Sakurato - это новый движок для сайтов написанный на PHP версии 8.2 с полным исходным кодом. 
 
 #### Движок публично используется на проекте <a href="https://svamc.su">SVA.su!</a> и на хостинге <a href="https://apexnodes.xyz">ApexNodes.xyz</a>
 
@@ -44,7 +44,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 ###### Сердце движка, если хотите можете изменить путь где будет храниться движок.
 
 ```bash
-mkdir -p /var/www && cd /var/www && git clone https://github.com/git-engine/gitengine && cd /var/www/gitengine && composer install
+mkdir -p /var/www && cd /var/www && git clone https://github.com/sva-su/sakurato && cd /var/www/sakurato && composer install
 ```
 
 # Настройка движка
@@ -54,7 +54,7 @@ mkdir -p /var/www && cd /var/www && git clone https://github.com/git-engine/gite
 ### Настройка прав
 
 ```bash
-chmod -R 755 /var/www/gitengine
+chmod -R 755 /var/www/sakurato
 ```
 
 ### Настройки MySQL базы данных
@@ -75,9 +75,9 @@ CREATE DATABASE database_name;
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
      INSERT INTO config (down) VALUES ('0');
  UPDATE config SET down = '0' WHERE config.down = 1;
- -- Создание пользователя gitengine с разрешением подключатся только с локальной сети с своим паролем --
-CREATE USER 'gitengine'@'127.0.0.1' IDENTIFIED BY 'Password';
-GRANT ALL PRIVILEGES ON database_name.* TO 'gitengine'@'127.0.0.1' WITH GRANT OPTION;
+ -- Создание пользователя sakurato с разрешением подключатся только с локальной сети с своим паролем --
+CREATE USER 'sakurato'@'127.0.0.1' IDENTIFIED BY 'Password';
+GRANT ALL PRIVILEGES ON database_name.* TO 'sakurato'@'127.0.0.1' WITH GRANT OPTION;
 ```
 
 #### Через терминал
@@ -92,9 +92,9 @@ use database_name;
 CREATE TABLE config (down int NOT NULL AUTO_INCREMENT,PRIMARY KEY (down)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 INSERT INTO config (down) VALUES ('0');
 UPDATE config SET down = '0' WHERE config.down = 1;
- -- Создание пользователя gitengine с разрешением подключатся только с локальной сети с своим паролем --
-CREATE USER 'gitengine'@'127.0.0.1' IDENTIFIED BY 'Password';
-GRANT ALL PRIVILEGES ON database_name.* TO 'gitengine'@'127.0.0.1' WITH GRANT OPTION;
+ -- Создание пользователя sakurato с разрешением подключатся только с локальной сети с своим паролем --
+CREATE USER 'sakurato'@'127.0.0.1' IDENTIFIED BY 'Password';
+GRANT ALL PRIVILEGES ON database_name.* TO 'sakurato'@'127.0.0.1' WITH GRANT OPTION;
 
 exit
 ```
@@ -112,8 +112,8 @@ rm /etc/nginx/sites-enabled/default
 ###### Без этого на сайт не зайдем, создаем и заходим в конфигурацию.
 
 ```bash
-touch /etc/nginx/sites-enabled/gitengine.conf
-nano /etc/nginx/sites-enabled/gitengine.conf
+touch /etc/nginx/sites-enabled/sakurato.conf
+nano /etc/nginx/sites-enabled/sakurato.conf
 ```
 
 ##### Nginx конфигурации с SSL
@@ -131,7 +131,7 @@ server {
 
 server {
  server_name <DOMAIN>;
- root /var/www/gitengine/pages/index.php;
+ root /var/www/sakurato/pages/index.php;
  index index.php;
 
     listen 443 ssl; 
@@ -171,7 +171,7 @@ server {
 ```conf
 server {
 #    server_name <DOMAIN>;
-    root /var/www/gitengine/pages/index.php;
+    root /var/www/sakurato/pages/index.php;
     index index.php;
 
     listen 80;
@@ -244,7 +244,7 @@ return [
 ```php
 <?php
 return [
-    'root' => "/var/www/gitengine/",
+    'root' => "/var/www/sakurato/",
 ];
 ```
 
