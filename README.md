@@ -19,13 +19,13 @@
 ###### Для нормальной установки компонентов движка, зайдите с root командой `sudo -s`.
 
 ```bash
-apt install -y git && LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:redislabs/redis && apt update && apt install -y php8.2-{cli,curl,fpm,mysql} nginx redis-server mysql-{server,client} && apt purge apache2 && curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+apt install -y git software-properties-common && LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:redislabs/redis && apt update && apt install -y php8.2-{cli,curl,fpm,mysql} nginx redis-server mysql-{server,client} && apt purge apache2 && curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 
 ###### Отдельные команды, если нужно установить что-то отдельно.
 
 ```bash
-apt install -y git
+apt install -y git software-properties-common
 # Добавление новых репозиторий с пакетами
 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 add-apt-repository -y ppa:redislabs/redis 
