@@ -1,6 +1,6 @@
 <?php
 
-if(!isset($_SERVER['REQUEST_URI'])) die("[GitEngine] Вы используете php-cli, чего данный фреймворк не поддерживает. Пожалуйста, зайдите с браузера или используйте client в корне проекта\n");
+if(!isset($_SERVER['REQUEST_URI'])) die("[Sakurato] Вы используете php-cli, чего данный фреймворк не поддерживает. Пожалуйста, зайдите с браузера или используйте client в корне проекта\n");
 
 require "../config/main.php";
 require "../templates/function/file.php";
