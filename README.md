@@ -258,7 +258,7 @@ return [
     'char-set' => 'UTF-8', // Кодировка текста в почте.
     'from' => 'mail@mail.ru', // Почта в заголовке
     'host' => 'smtp.mail.ru', // SMTP сервер
-    'user' => 'main@mail.ru', // Имя пользователя(почта)
+    'user' => 'mail@mail.ru', // Имя пользователя(почта)
     'password' => 'Password', // Пароль
     'port' => '465', // Порт SMTP сервер
 ];
