@@ -1,6 +1,6 @@
 <?php
 
-if(!isset($_SERVER['REQUEST_URI'])) die("[GitEngine] Вы используете php-cli, чего данный фреймворк не поддерживает. Пожалуйста, зайдите с браузера или используйте client в корне проекта\n");
+if(!isset($_SERVER['REQUEST_URI'])) die("[Sakurato] Вы используете php-cli, чего данный фреймворк не поддерживает. Пожалуйста, зайдите с браузера или используйте client в корне проекта\n");
 
 require "../config/main.php";
 require "../templates/function/file.php";
@@ -57,5 +57,3 @@ if (PHP_VERSION_ID < 80000) {
     }
     else if(!file_exists($pathServer)) ShowError(404);
     else ShowError(500); 
-
-?>
