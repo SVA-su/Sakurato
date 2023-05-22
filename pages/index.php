@@ -57,5 +57,3 @@ if (PHP_VERSION_ID < 80000) {
     }
     else if(!file_exists($pathServer)) ShowError(404);
     else ShowError(500); 
-
-?>
